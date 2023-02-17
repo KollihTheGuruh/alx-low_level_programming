@@ -1,24 +1,22 @@
-#include <stdio.h>
+#inlude <stdio.h>
 /**
- * main - program that prints numbers from 0 to 99.
+ * main - a program that prints all possible different combinations of two digits.
  * Return: 0
  */
 
-int main(void)
-{
-	int c = 0;
+int main(void) {
+    int i, j;
 
-	while (c <= 99)
-	{
-		putchar(c / 10 + '0');
-		putchar(c % 10 + '0');
-		if (c != 99)
-		{
-			putchar(',');
-			putchar(' ');
-		}
-		c++;
-	}
-putchar('\n');
-return (0);
+    for (i = 0; i <= 8; i++) {
+        for (j = i+1; j <= 9; j++) {
+            putchar('0' + i);
+            putchar('0' + j);
+            if (i < 8) {
+                putchar(',');
+                putchar(' ');
+            }
+        }
+    }
+
+    return 0;
 }
