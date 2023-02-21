@@ -8,14 +8,14 @@
 int main(void)
 {
     /* Use putchar to print "_putchar", and a newline */
-	char _putchar[8] = {'_' 'p' 'u' 't' 'c' 'h' 'a' 'r'};
+	char _putchar[8] = {'_', 'p', 'u', 't', 'c', 'h', 'a', 'r'};
 	unsigned int a;
 
-	for (c = 0; sizeof(_putchar) a++)
+	for (a = 0; sizeof(a); a++)
 	{
-		_putchar(_putchar[a]);
+		putchar(a[a]);
 	}
-	_putchar('\n');
+	putchar('\n');
 	return (0);
 
 }
