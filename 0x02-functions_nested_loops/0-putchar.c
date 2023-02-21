@@ -7,15 +7,16 @@
  */
 int main(void)
 {
-    /* Use putchar to print "_putchar", and a newline */
-	char _putchar[8] = {'_', 'p', 'u', 't', 'c', 'h', 'a', 'r'};
-	unsigned int a;
-
-	for (a = 0; sizeof(a); a++)
-	{
-		putchar(a[a]);
-	}
+    /* Use _putchar to print "_putchar" and a newline */
+	putchar('_');
+	putchar('p');
+	putchar('u');
+	putchar('t');
+	putchar('c');
+	putchar('h');
+	putchar('a');
+	putchar('r');
 	putchar('\n');
-	return (0);
 
+    return (0);
 }
