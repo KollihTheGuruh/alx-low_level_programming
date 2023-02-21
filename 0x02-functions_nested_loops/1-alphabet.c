@@ -8,13 +8,11 @@
 
 int main(void)
 {
-	char letter = 'a';
+	char alp;
 
-	while
-		(letter <= 'z');
+	for (alp = 'a'; alp <= 'z'; alp++)
 	{
-	putchar(letter);
-	letter++;
+	putchar(alp);
 }
 	putchar('\n');
 }
