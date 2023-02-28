@@ -2,11 +2,11 @@
 
 
 /**
- *  * _atoi - function definition
- *   * Description: convert string to integer
- *    * @s: the string pointer
- *     * Return: integer value of string
- *      */
+ * _atoi - function definition
+ * Description: convert string to integer
+ * @s: the string pointer
+ * Return: integer value of string
+ */
 
 int _atoi(char *s)
 
@@ -14,8 +14,7 @@ int _atoi(char *s)
 	int num_sign = 1;
 	unsigned int digit = 0;
 
-	do
-       	{
+	do {
 	if (*s == '-')
 	{
 	num_sign *= -1;
