@@ -13,15 +13,15 @@ char *rot13(char *str)
 
 	for (; *ptr != '\0'; ptr++)
 	{
-	int ascii_val = (int)*ptr;
+	int ascii = (int)*ptr;
 
-	if ((ascii_val >= 'a' && ascii_val <= 'm') || (ascii_val >= 'A' && ascii_val <= 'M'))
+	if ((ascii >= 'a' && ascii <= 'm') || (ascii >= 'A' && ascii <= 'M'))
 	{
-	*ptr = (char)(ascii_val + 13);
+	*ptr = (char)(ascii + 13);
 	}
-	else if ((ascii_val >= 'n' && ascii_val <= 'z') || (ascii_val >= 'N' && ascii_val <= 'Z'))
+	else if ((ascii >= 'n' && ascii <= 'z') || (ascii >= 'N' && ascii <= 'Z'))
 	{
-	*ptr = (char)(ascii_val - 13);
+	*ptr = (char)(ascii - 13);
 	}
 	}
 
