@@ -1,87 +1,101 @@
 #include "main.h"
+#include <stdlib.h>
 #include <stdio.h>
 
 /**
- * _putchar - writes the character c to stdout
- * @c: The character to print
- *
- * Return: On success 1.
- * On error, -1 is returned, and errno is set appropriately.
- */
-void _putchar(char c)
+* is_digit - Checks if a string is composed of digits.
+* @str: The string to check.
+*
+* Return: 1 if @str is composed of digits, 0 otherwise.
+*/
+int is_digit(char *str)
 {
-    fwrite(1, &c, 1);
+int i;
+
+for (i = 0; str[i]; i++)
+{
+if (str[i] < '0' || str[i] > '9')
+return (0);
+}
+
+return (1);
 }
 
 /**
- * _isdigit - checks if a character is a digit
- * @c: the character to check
- *
- * Return: 1 if c is a digit, 0 otherwise
- */
-int _isdigit(char c)
+* _strlen - Computes the length of a string.
+* @str: The string to measure.
+*
+* Return: The length of @str.
+*/
+int _strlen(char *str)
 {
-    return (c >= '0' && c <= '9');
+int i;
+
+for (i = 0; str[i]; i++)
+;
+
+return (i);
 }
 
 /**
- * _atoi - converts a string to an integer
- * @s: the string to convert
- *
- * Return: the integer value of the string
- */
-int _atoi(char *s)
+* _atoi - Converts a string to an integer.
+* @str: The string to convert.
+*
+* Return: The integer value of @str.
+*/
+int _atoi(char *str)
 {
-    int sign = 1, num = 0, i = 0;
+int i, n;
 
-    if (s[i] == '-')
-    {
-        sign = -1;
-        i++;
-    }
-    while (s[i] != '\0')
-    {
-        if (_isdigit(s[i]))
-        {
-            num = num * 10 + (s[i] - '0');
-        }
-        else
-        {
-            break;
-        }
-        i++;
-    }
-    return sign * num;
+n = 0;
+for (i = 0; str[i]; i++)
+{
+if (str[i] < '0' || str[i] > '9')
+return (-1);
+
+n = n * 10 + (str[i] - '0');
+}
+
+return (n);
 }
 
 /**
- * main - entry point
- * @argc: number of arguments passed to the program
- * @argv: array of strings containing the arguments
- *
- * Return: 0 on success, 1 on error
- */
+* main - Multiplies two positive numbers.
+* @argc: The number of arguments.
+* @argv: The argument vector.
+*
+* Return: 0 if successful, otherwise 98.
+*/
 int main(int argc, char *argv[])
 {
-    int num1, num2, result;
+unsigned long int a, b, res;
+int len_a, len_b;
 
-    if (argc != 3)
-    {
-        _putchar('E');
-        _putchar('r');
-        _putchar('r');
-        _putchar('o');
-        _putchar('r');
-        _putchar('\n');
-        return (1);
-    }
+if (argc != 3)
+{
+printf("Error\n");
+return (98);
+}
 
-    num1 = _atoi(argv[1]);
-    num2 = _atoi(argv[2]);
+if (!is_digit(argv[1]) || !is_digit(argv[2]))
+{
+printf("Error\n");
+return (98);
+}
 
-    result = num1 * num2;
+len_a = _strlen(argv[1]);
+len_b = _strlen(argv[2]);
+if (len_a == 0 || len_b == 0)
+{
+printf("Error\n");
+return (98);
+}
 
-    printf("%d\n", result);
+a = _atoi(argv[1]);
+b = _atoi(argv[2]);
 
-    return (0);
+res = a *b;
+printf("%lu\n", res);
+
+return (0);
 }

@@ -7,5 +7,7 @@ void *_calloc(unsigned int nmemb, unsigned int size);
 int *array_range(int min, int max);
 int _putchar(char c);
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
+int _strlen(char *str);
+unsigned long int mul(unsigned long int a, unsigned long int b);
 
 #endif
