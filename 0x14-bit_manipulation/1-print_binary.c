@@ -2,15 +2,28 @@
 #include "math.h"
 
 /**
- * get_endianness - sets the value of a bit to 1 at a given index
- * Return: 1 if little endian 0 if big endian
+ * _right_pbin_mask - recursion function to print bit 0 (acts as a mask)
+ * @n: type const unsigned long int
  */
-int get_endianness(void)
-{
-	unsigned int i = 1;
-	char *j = (char *)&i;
 
-	if (*j)
-		return (1);
-	return (0);
+void _right_pbin_mask(unsigned long int n)
+{
+	if (n == 0)
+		return;
+	_right_pbin_mask(n >> 1);
+	_putchar((n & 1) + '0');
+}
+
+/**
+ * print_binary - prints the binary representation of a number
+ * @n: type const unsigned long int
+ * Return: binary number
+ */
+
+void print_binary(unsigned long int n)
+{
+	if (n == 0)
+		_putchar('0');
+	else
+		_right_pbin_mask(n);
 }
