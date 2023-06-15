@@ -1,42 +1,38 @@
-#include <string.h>
 #include <stdio.h>
-#include <stdlib.h>
 
-char *reversed(char *str)
-{
-    int i = 0, j = (strlen(str) - 1);
+int isPalindrome(int number) {
+    int reversed = 0;
+    int temp = number;
 
-    while (i < j)
-    {
-        char tmp = str[i];
-        str[i] = str[j];
-        str[j] = tmp;
-        i++;
-        j--;
+    while (temp > 0) {
+        reversed = reversed * 10 + temp % 10;
+        temp /= 10;
     }
-    return (str);
+
+    return (reversed == number);
 }
 
-int main(void)
-{
-    int i, j, result, highest = 0;
-    char num1[20], num2[20];  // Increase buffer size to accommodate larger numbers
+int main() {
+    int largestPalindrome = 0;
 
-    for (i = 100; i < 1000; i++)
-    {
-        for (j = 100; j < 1000; j++)
-        {
-            result = j * i;
-            sprintf(num1, "%d", result);
-            strcpy(num2, num1);
-            if (strcmp(num1, reversed(num2)) == 0)
-            {
-                if (result > highest)
-                    highest = result;
+    for (int i = 999; i >= 100; i--) {
+        for (int j = 999; j >= 100; j--) {
+            int product = i * j;
+            if (isPalindrome(product) && product > largestPalindrome) {
+                largestPalindrome = product;
             }
         }
     }
-    FILE *fp = fopen("102-result", "w");
-    fprintf(fp, "%d", highest);
-    fclose(fp);
+
+    // Save the result in the file
+    FILE *file = fopen("102-result", "w");
+    if (file != NULL) {
+        fprintf(file, "%d", largestPalindrome);
+        fclose(file);
+        printf("Result saved in the file '102-result'.\n");
+    } else {
+        printf("Unable to open the file for writing.\n");
+    }
+
+    return 0;
 }
