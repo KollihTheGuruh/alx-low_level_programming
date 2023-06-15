@@ -1,26 +1,42 @@
+#include <string.h>
 #include <stdio.h>
+#include <stdlib.h>
 
-int is_palindrome(int n) {
-int rev = 0;
-int temp = n;
-while (temp != 0) {
-rev = rev * 10 + temp % 10;
-temp /= 10;
-}
-return n == rev;
+char *reversed(char *str)
+{
+    int i = 0, j = (strlen(str) - 1);
+
+    while (i < j)
+    {
+        char tmp = str[i];
+        str[i] = str[j];
+        str[j] = tmp;
+        i++;
+        j--;
+    }
+    return (str);
 }
 
-int main() {
-int i, j;
-int largest = 0;
-for (i = 100; i < 1000; i++) {
-for (j = i; j < 1000; j++) {
-int product = i * j;
-if (is_palindrome(product) && product > largest) {
-largest = product;
-}
-}
-}
-printf("%d", largest);
-return 0;
+int main(void)
+{
+    int i, j, result, highest = 0;
+    char num1[20], num2[20];  // Increase buffer size to accommodate larger numbers
+
+    for (i = 100; i < 1000; i++)
+    {
+        for (j = 100; j < 1000; j++)
+        {
+            result = j * i;
+            sprintf(num1, "%d", result);
+            strcpy(num2, num1);
+            if (strcmp(num1, reversed(num2)) == 0)
+            {
+                if (result > highest)
+                    highest = result;
+            }
+        }
+    }
+    FILE *fp = fopen("102-result", "w");
+    fprintf(fp, "%d", highest);
+    fclose(fp);
 }
